@@ -34,23 +34,24 @@ void setY(int y){
 }
 // 5. Create (but do not initialize) a Segment variable to hold the head of the Snake
 
-
+Segment head;
 
 // 6. Create and initialize a String to hold the direction of your snake e.g. "up"
-
+String direction= "up";
 
 
 // 7. Create and initialize a variable to hold how many pieces of food the snake has eaten.
 // give it a value of 1 to start.
-
+int food= 1;
 
 
 // 8. Create and initialize foodX and foodY variables to hold the location of the food.
 
+
 // (Hint: use the random method to set both the x and y to random locations within the screen size (500 by 500).)
 
-//int foodX = ((int)random(50)*10);
-
+int foodX = ((int)random(50)*10);
+int foodY= ((int) random (50)*10);
 
 
 void setup() {
@@ -61,9 +62,11 @@ void setup() {
 
 
   // 10. initialize your head to a new segment.
-
+head= new Segment(10,10);
 
   // 11. Use the frameRate(int rate) method to set the rate to 20.
+  frameRate=20;
+  
 }
 
 
@@ -73,19 +76,24 @@ void draw() {
 
 
   //12. Call the manageTail, drawFood, drawSnake, move, and collision methods.
-}
-
+  
+manageTail(); 
+drawFood();
+drawSnake();
+move();
+collision();
 
 // 13. Complete the drawFood method below. (Hint: each piece of food should be a 10 by 10 rectangle).
-
+}
 void drawFood() {
+rect(foodX, foodY, 10,10);  
 }
 
 
 //14. Draw the snake head (use a 10 by 10 rectangle)
 
 void drawSnake() {
-
+rect(head.x, head.y, 10,10);
 
   //test your code
 }
@@ -97,25 +105,26 @@ void move() {
 
   // 16. Using a switch statement, make your snake head move by 10 pixels in the correct direction.
   //This is an incomplete switch statement:
-  /*
-  switch(dir) {
+  
+  switch(direction) {
   case "up":
-    // move head up here 
-   // break;
+head.y=-10;
+   break;
   case "down":
-    // move head down here 
-  //  break;
+head.x= -10;
+ break;
   case "left":
-   // figure it out 
-  //  break;
+head.y= +10;
+  break;
   case "right":
-    // mystery code goes here 
-    //break;
+head.x= +10;
+ break;
   }
-  */
+
 
 
   // 17. Call the checkBoundaries method to make sure the snake head doesn't go off the screen.
+  checkBoundaries();
 }
 
 
