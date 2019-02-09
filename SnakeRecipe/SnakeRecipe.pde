@@ -131,13 +131,34 @@ head.x= +10;
 // 18. Complete the keyPressed method below. Use if statements to set your direction variable depending on what key is pressed.
 
 void keyPressed() {
-}
 
+  if(keyCode==38){
+        if(direction.equals("down")){
+ direction="up";
+   
+  }
+  if(keyCode==37){
+        if(direction.equals("right")){
+   direction="left";
+  }
+  }
+    if(keyCode==39){
+          if(direction.equals("left")){
+ direction="right";
+  }
+    }
+    if(keyCode==40){
+      if(direction.equals("up")){
+ direction="down";
+      }
+  }
+}
+}
 
 
 // 19. check if your head is out of bounds (teleport your snake head to the other side).
 
-void checkBoundaries() {
+void checkBoundaries(){
 }
 
 
@@ -152,6 +173,11 @@ void collision() {
 
   // If the segment is colliding with a piece of food...
      // Increase the amount of food eaten and set foodX and foodY to new random locations.
+   if(head.x== foodX&&head.y== foodY){
+     
+   }
+
+     
 }
 
 
@@ -170,7 +196,8 @@ void collision() {
 void manageTail() {
 
   //Call the drawTail and checkTailCollision methods.
-
+drawTail();
+checkTailCollision();
   // Add a new Segment to your ArrayList that has the same X and Y as the head of your snake.
 
   // To keep your tail the right length:
